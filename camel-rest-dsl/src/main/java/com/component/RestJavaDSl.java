@@ -9,6 +9,7 @@ import org.apache.camel.support.DefaultMessage;
 
 
 //@Component
+// This is not working
 public class RestJavaDSl extends RouteBuilder {
 
     private final WeatherDataProvider weatherDataProvider;
@@ -58,32 +59,3 @@ public class RestJavaDSl extends RouteBuilder {
 
     }
 }
-/*
-getContext() returns the CamelContext.
-CamelContext = the runtime container of Camel
-CamelContext
- ├── Routes
- ├── Components (http, rabbitmq, activemq)
- ├── Type Converters
- ├── Error Handlers
- ├── Thread Pools
- └── Registry (Spring Beans)
-
- */
-
-//        restConfiguration()
-//                .component("servlet")
-//                .bindingMode(RestBindingMode.json);
-
-// REST CONTRACT (HTTP layer)
-//        rest("javadsl")
-//                .get("/weather/{city}")
-//                .produces("application/json")
-//                .outType(WeatherDto.class)
-//                .to("direct:get-weather");
-//
-//        // 3️⃣ ROUTE LOGIC (Camel layer)
-//        from("direct:get-weather")
-//                .log(">>> ROUTE HIT, city=${header.city}")
-//                .process(this::getWeatherData)
-//                .log(">>> BODY AFTER PROCESS = ${body}");

@@ -15,5 +15,3 @@ Project Description
  		Apache camel 
  		Jackson 
 
- 		
-

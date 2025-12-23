@@ -45,7 +45,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-activemq-starter</artifactId>
             <version>4.15.0</version>
-
         </dependency>
 
         <dependency>
@@ -53,8 +52,6 @@
             <artifactId>camel-jackson-starter</artifactId>
             <version>4.15.0</version>
         </dependency>
-
-
 
         <dependency>
 			<groupId>org.projectlombok</groupId>
