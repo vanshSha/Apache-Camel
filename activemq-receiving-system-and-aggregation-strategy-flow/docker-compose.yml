@@ -1,0 +1,22 @@
+#version: "3.8"
+
+services:
+  activemq:
+    image: apache/activemq-classic:latest
+    platform: linux/arm64
+    container_name: activemq-classic
+    ports:
+      - "61616:61616"   # OpenWire (Java, Camel, JMS)
+      - "8161:8161"     # Web Console
+      - "5672:5672"     # AMQP
+      - "61613:61613"   # STOMP
+      - "1883:1883"     # MQTT
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+    volumes:
+      - activemq-data:/opt/activemq/data
+    restart: unless-stopped
+
+volumes:
+  activemq-data:
