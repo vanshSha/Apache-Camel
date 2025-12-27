@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-s@Component
+@Component
 public class MulticastRoute extends RouteBuilder {
 
     @Override
@@ -42,7 +42,7 @@ public class MulticastRoute extends RouteBuilder {
     Puts the modified String back into the message
      */
     private void enrich(Exchange exchange, String statusValue) {
-        Message in = exchange.getIn();
+        Message message = exchange.getIn();
         String order = in.getBody(String.class);
         String status = "'status': '" + statusValue + "' ";
         String body = order.replace("}", ", " + status + "}");

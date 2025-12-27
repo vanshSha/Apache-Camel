@@ -11,7 +11,7 @@ import static org.apache.camel.LoggingLevel.ERROR;
 @Component
 public class AggregationRoute extends RouteBuilder {
 
-    final String CORRELATION_ID = "correlationId";
+    final String CORRELATION_ID = "correlationId";   // Correlation Identifier 1
     // Correlation is the mechanism used to identify and group related messages using a shared identifier.
 
     @Override
@@ -28,7 +28,7 @@ public class AggregationRoute extends RouteBuilder {
                     message.setBody(new Date()); // erases the old content and writes new content into the SAME message.
                 })
 //                .log(ERROR, "${header."+CORRELATION_ID+"} ${body}")
-
+                 // Completion Condition
                 // .aggregate() this method allows message aggregation
                 .aggregate(header(CORRELATION_ID), new MyAggregationStrategy())
                 .completionSize(2) // completes an aggregation once n messages with the same correlation key are received.
