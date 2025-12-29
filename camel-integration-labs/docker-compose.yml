@@ -1,0 +1,33 @@
+services:
+  activemq:
+    image: apache/activemq-classic:latest
+    platform: linux/arm64
+    container_name: activemq-classic
+    ports:
+      - "61616:61616"   # OpenWire (Java, Camel, JMS)
+      - "8161:8161"     # Web Console
+      - "5672:5672"     # AMQP
+      - "61613:61613"   # STOMP
+      - "1883:1883"     # MQTT
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+    volumes:
+      - activemq-data:/opt/activemq/data
+    restart: unless-stopped
+
+  nats:
+    image: nats:latest
+    platform: linux/arm64/v8
+    hostname: nats
+    container_name: nats
+    ports:
+      - "4222:4222"   # Client connections
+      - "8222:8222"   # HTTP monitoring
+    command: >
+      -js
+      -m 8222
+    restart: unless-stopped
+
+volumes:
+  activemq-data:
